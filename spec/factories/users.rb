@@ -10,6 +10,5 @@ FactoryBot.define do
     family_name_k         {"タカダ"}
     first_name_k          {"ユウマ"}
   end
-  factory :user2 do
 end
 
