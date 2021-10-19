@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only:[:new,:edit,:destroy]
   before_action :set_item, only: [:show,:edit,:update,:destroy]
   before_action :another_user, only: [:edit,:destroy]
+  before_action :purchased, only: [:edit]
 
   def index
     @items = Item.order("created_at DESC")
@@ -56,4 +57,11 @@ private
       redirect_to action: :index
     end
   end
+
+  def purchased
+    if  @item.shipment.present? 
+      redirect_to root_path
+    end
+  end
+
 end
