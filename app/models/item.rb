@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :fee
   belongs_to :days
   belongs_to :user
+  has_one    :shipment
 
   has_one_attached :image
 
