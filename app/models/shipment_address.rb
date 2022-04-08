@@ -3,8 +3,8 @@ class ShipmentAddress
   attr_accessor :post_num, :prefecture_id, :city, :house_num, :building, :tel,:item_id, :user_id, :token
 
   with_options presence: true do
-    validates :post_num, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
+    validates :post_num, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "にはハイフンを入力してください"}
+    validates :prefecture_id, numericality: {other_than: 0, message: "を入力してください"}
     validates :city
     validates :house_num
     validates :tel, format: {with: /\A\d{10,11}\z/}
