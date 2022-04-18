@@ -49,7 +49,7 @@ private
   end
 
   def item_params
-    params.require(:item).permit(:name, :image, :price, :exp, :category_id, :status_id, :fee_id, :prefecture_id, :days_id).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, {images: []}, :price, :exp, :category_id, :status_id, :fee_id, :prefecture_id, :days_id).merge(user_id: current_user.id)
   end
   
   def another_user
