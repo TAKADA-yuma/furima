@@ -1,0 +1,28 @@
+<%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+<div class="AccountPage">
+  <div class="AccountPage__title">
+    <h1>マイページ</h1>
+    <div class="whosepage"> <%= "#{current_user.nickname}さんのマイページです" %> </div>
+  </div><br>
+  <div class="Card__title">
+    <h2>カード情報</h2>
+  </div>
+  <div class="Card_info">
+    <div class="detail">【カード番号】</div>
+
+    <%= "**** **** **** " + @card[:last4] %>
+   
+    <div class="detail">【有効期限】</div>
+
+    <%= @card[:exp_month] %>
+    /
+    <%= @card[:exp_year] %>
+  </div>
+    <br>
+    <br>
+    <br>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete%>
+    <br>
+    <%= link_to "商品一覧へ戻る", root_path%>
+  </div>
+</div>
