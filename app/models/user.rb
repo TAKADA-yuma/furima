@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :items
   has_many :shipments
+  has_one :card
 
   validates :nickname, presence: true
   validates :birthday, presence: true

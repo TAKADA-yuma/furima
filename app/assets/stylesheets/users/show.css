@@ -1,0 +1,41 @@
+.mypage{
+  font-size: 70px;
+	text-align:center;
+	line-height:0.95em;
+	font-weight:bold;
+	color: #FFF;
+	text-shadow: 0 0 0.2em rgba(0,0,0,1);
+}
+
+h2:before {
+  left: 10;
+}
+
+h2:after {
+  right: 0;
+}
+
+h2{
+  font-size: 40px;
+ 
+}
+
+.furima-icon{
+  height: 80px;
+  width: 180px;
+}
+
+.AccountPage__title{
+  /* background: linear-gradient(blue, pink); */
+  height:150px;
+  text-align: center;
+}
+.AccountPage{
+  background: linear-gradient(white, rgb(84, 86, 95));
+  height: 630px;
+}
+
+.detail{
+  font-size: 20px;
+  margin-top: 20px;
+}

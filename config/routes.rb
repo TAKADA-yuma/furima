@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :items do
     resources :shipments,only: [:index,:create]
   end
+  resources :cards, only: [:new,:create]
+  resources :users, only: [:show]
 end
