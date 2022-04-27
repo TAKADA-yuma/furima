@@ -2,7 +2,7 @@ const pay = () => {
   // const url = location.href; 
   // if(url.match('cards')){  
     Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
-      const submit = document.getElementById("button"); 
+      const submit = document.getElementById("card_button"); 
       submit.addEventListener("click", (e) => { // イベント発火
       e.preventDefault();
 
