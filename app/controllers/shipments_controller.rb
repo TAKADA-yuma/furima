@@ -1,15 +1,17 @@
 class ShipmentsController < ApplicationController
-  before_action :set_item, only:[:index,:create,:move_to_index,:pay_item]
+  before_action :set_item, only:[:index,:create]
   before_action :authenticate_user!, only:[:index]
   before_action :move_to_index
   before_action :purchased
+  before_action :not_resisterd
 
   def index
+    # binding.pry
     @shipment_address = ShipmentAddress.new 
   end
 
   def create
-    redirect_to new_card_path and return unless current_user.card.present?
+    # redirect_to new_card_path and return unless current_user.card.present?
     @shipment_address = ShipmentAddress.new(shipment_params)
     if @shipment_address.valid?
       pay_item
@@ -49,6 +51,12 @@ class ShipmentsController < ApplicationController
   def purchased
     if  @item.shipment.present? 
       redirect_to root_path
+    end
+  end
+
+  def not_resisterd
+    if current_user.card == nil
+      redirect_to new_card_path
     end
   end
 
