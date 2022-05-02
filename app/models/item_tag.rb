@@ -1,17 +1,7 @@
-class Item < ApplicationRecord
-  extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-  belongs_to :status
-  belongs_to :prefecture
-  belongs_to :fee
-  belongs_to :days
-  belongs_to :user
-  has_one    :shipment
-  has_many :item_tag_relations
-  has_many :tags, through: :item_tag_relations
+class ItemTag
+  include ActiveModel::Model
 
-  has_many_attached :images
-
+  attr_accessor :name, :price, :exp, :category_id, :status_id, :fee_id, :prefecture_id, :days_id, :images,:id, :created_at, :datetime, :updated_at,:user_id, :tag_name
 
   validates :name, presence: true
   validates :exp, presence: true
@@ -22,4 +12,16 @@ class Item < ApplicationRecord
   validates :status_id, numericality: { other_than: 0, message: "を選択して下さい"}
   validates :fee_id, numericality: { other_than: 0, message: "を選択して下さい"}
   validates :days_id, numericality: { other_than: 0, message: "を選択して下さい"}
+
+  def save
+    item = Item.new(name: name,exp: exp,price: price,category_id: category_id,prefecture_id: prefecture_id, status_id: status_id, fee_id: fee_id, images: images, days_id: days_id, user_id: user_id)
+    tag = Tag.where(tag_name: tag_name).first_or_initialize
+    binding.pry
+    if item.valid?
+      item.save
+      tag.save
+      ItemTagRelation.create(item_id: item.id, tag_id: tag.id)
+    end
+  end
+
 end

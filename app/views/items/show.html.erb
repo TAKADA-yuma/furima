@@ -43,6 +43,10 @@
     </div>
     <table class="detail-table">
       <tbody>
+      <tr>
+        <th class="detail-item">タグ</th>
+        <td class="detail-value"><%= @item.tags&.first&.tag_name  %></td>
+       </tr>
         <tr>
           <th class="detail-item">出品者</th>
           <td class="detail-value"><%= @item.user.nickname %></td>
