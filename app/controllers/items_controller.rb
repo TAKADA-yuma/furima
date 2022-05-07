@@ -9,12 +9,13 @@ class ItemsController < ApplicationController
   end
   
   def new
-    @item = Item.new
+    # @item = Item.new
+    @item_tag = ItemTag.new
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
+    @item_tag = ItemTag.new(item_params)
+    if @item_tag.save
       redirect_to root_path
     else
       render :new
@@ -49,7 +50,9 @@ private
   end
 
   def item_params
-    params.require(:item).permit(:name, {images: []}, :price, :exp, :category_id, :status_id, :fee_id, :prefecture_id, :days_id).merge(user_id: current_user.id)
+    params.require(:item_tag).permit(:name, :tag_name, :price, :exp, :category_id, :status_id, :fee_id, :prefecture_id, :days_id, {images: []}).merge(user_id: current_user.id)
+    # なぜ？imageの前に追加するよう注意しましょう。
+    # なぜ？imagesは最後なのか
   end
   
   def another_user
