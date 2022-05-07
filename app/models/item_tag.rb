@@ -16,7 +16,6 @@ class ItemTag
   def save
     item = Item.new(name: name,exp: exp,price: price,category_id: category_id,prefecture_id: prefecture_id, status_id: status_id, fee_id: fee_id, images: images, days_id: days_id, user_id: user_id)
     tag = Tag.where(tag_name: tag_name).first_or_initialize
-    binding.pry
     if item.valid?
       item.save
       tag.save
