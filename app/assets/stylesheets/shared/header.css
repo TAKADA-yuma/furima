@@ -28,7 +28,7 @@
 }
 
 .search-form>.input-box {
-  width: 100%;
+  width: 83%;
   height: 5vh;
   padding-left: 10px;
 }
@@ -101,4 +101,14 @@
 .sign-up {
   text-decoration: none;
   color: #333333;
+}
+
+.search-part{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+div#search-result{
+  width: 100%;
 }

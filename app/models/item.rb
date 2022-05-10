@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   belongs_to :fee
   belongs_to :days
   belongs_to :user
-  has_one    :shipment
+  has_one  :shipment
   has_many :item_tag_relations
   has_many :tags, through: :item_tag_relations
 
