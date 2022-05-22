@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     collection do
       get 'search'
     end
-    
+
+    collection do
+      get 'tag_search'
+    end
   end
   resources :cards, only: [:new,:create]
   resources :users, only: [:show]

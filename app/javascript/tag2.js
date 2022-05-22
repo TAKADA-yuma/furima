@@ -8,7 +8,7 @@ const tagNameInputNewItem = document.getElementById("item_tag_tag_name");
       // console.log("ok");
       const keyword = document.getElementById("item_tag_tag_name").value;
       const XHR2 = new XMLHttpRequest();
-      XHR2.open("GET", `/items/search/?keyword=${keyword}`, true);
+      XHR2.open("GET", `/items/tag_search/?keyword=${keyword}`, true);
       XHR2.responseType = "json";
       XHR2.send();
       XHR2.onload = () => {

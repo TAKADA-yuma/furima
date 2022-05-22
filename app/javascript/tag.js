@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const keyword = document.getElementById("input-box").value;
           const XHR = new XMLHttpRequest();
           console.log(keyword)
-          XHR.open("GET", `/items/search/?keyword=${keyword}`, true);
+          XHR.open("GET", `/items/tag_search/?keyword=${keyword}`, true);
           XHR.responseType = "json";
           XHR.send();
           XHR.onload = () => {
