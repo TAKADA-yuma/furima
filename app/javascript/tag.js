@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tagNameInput = document.getElementById("input-box");
     if (tagNameInput){
+
       const inputElement = document.getElementById("input-box");
        inputElement.addEventListener("input", () => {
           const keyword = document.getElementById("input-box").value;
           const XHR = new XMLHttpRequest();
+          console.log(keyword)
           XHR.open("GET", `/items/search/?keyword=${keyword}`, true);
           XHR.responseType = "json";
           XHR.send();

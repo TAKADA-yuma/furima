@@ -45,9 +45,9 @@ class ItemsController < ApplicationController
 
 
   def search
-    # return nil if params[:keyword] == ""
-    # tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
-    # render json:{ keyword: tag }
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: tag }
 
     
     # params[:q]がnilではない且つ、params[:q][:name]がnilではないとき（商品名の欄が入力されているとき）
