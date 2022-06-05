@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :shipments
   has_one :card
 
+  has_one :address
+
   validates :nickname, presence: true
   validates :birthday, presence: true
   validates :password, format: { with:/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i}
