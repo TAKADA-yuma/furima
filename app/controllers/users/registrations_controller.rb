@@ -15,11 +15,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
         return
       end
     session["devise.regist_data"] = {user: @user.attributes}
-    # attributesメソッドはインスタンスメソッドから取得できる値をオブジェクト型からハッシュ型に変換できるメソッドです。
+    # attributesメソッドはインスタンスメソッドから取得できる値をオブジェクト型からハッシュ型に変換できるメソッド。
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
-    # paramsの中にはパスワードの情報は含まれています。しかし、attributesメソッドでデータ整形をした際にパスワードの情報は含まれていません。そこで、パスワードを再度sessionに代入する必要があります。
+    # paramsの中にはパスワードの情報は含まれてるが、attributesメソッドでデータ整形をした際にパスワードの情報は含まれていない。
+    # そこで、パスワードを再度sessionに代入する必要がある。
     @address = @user.build_address
-    render :new_addres
+    render :new_address
+  end
+
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new(address_params)
+     unless @address.valid?
+       render :new_address 
+       return
+     end
+    @user.build_address(@address.attributes)
+    @user.save
+    session["devise.regist_data"]["user"].clear
+    sign_in(:user, @user)
+  end
+ 
+  private
+ 
+  def address_params
+    params.require(:address).permit(:post_num, :prefecture_id, :city, :house_num, :building, :tel).merge(user_id: @user.id)
   end
   
   # GET /resource/sign_up

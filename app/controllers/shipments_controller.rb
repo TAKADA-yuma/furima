@@ -6,16 +6,17 @@ class ShipmentsController < ApplicationController
   before_action :not_resisterd
 
   def index
-    # binding.pry
-    @shipment_address = ShipmentAddress.new 
+    # @shipment_address = ShipmentAddress.new 
+    @shipment = Shipment.new
   end
 
   def create
     # redirect_to new_card_path and return unless current_user.card.present?
-    @shipment_address = ShipmentAddress.new(shipment_params)
-    if @shipment_address.valid?
+    # @shipment_address = ShipmentAddress.new(shipment_params)
+    @shipment = Shipment.new(user_id: current_user.id, item_id: params[:item_id])
+    if @shipment.valid?
       pay_item
-      @shipment_address.save
+      @shipment.save
       redirect_to root_path
     else
       render :index
@@ -28,9 +29,10 @@ class ShipmentsController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def shipment_params
-    params.require(:shipment_address).permit(:post_num, :prefecture_id, :city, :house_num, :building,:tel).merge(token: current_user.card, user_id: current_user.id, item_id: params[:item_id])
-  end
+  # def shipment_params
+  #   params.require(:shipment_address).permit(:post_num, :prefecture_id, :city, :house_num, :building,:tel).merge(token: current_user.card, user_id: current_user.id, item_id: params[:item_id])
+  # end
+
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
