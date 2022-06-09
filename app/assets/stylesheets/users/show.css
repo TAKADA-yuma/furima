@@ -27,12 +27,11 @@ h2{
 
 .AccountPage__title{
   /* background: linear-gradient(blue, pink); */
-  height:150px;
+  height:100%;
   text-align: center;
 }
 .AccountPage{
   background: linear-gradient(white, rgb(84, 86, 95));
-  height: 630px;
 }
 
 .detail{
