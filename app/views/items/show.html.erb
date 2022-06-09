@@ -8,6 +8,11 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.images[0] ,class:"item-box-img" %>
+      <% if @item.shipment.present? %>
+        <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div>
+      <% end %>
       <% @item.images[1..-1].each do |img| %>
         <div class="other-image">
           <%= image_tag img %>
