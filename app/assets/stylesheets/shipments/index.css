@@ -155,3 +155,10 @@
   font-size: 14px;
   cursor: pointer;
 }
+
+.confirmation-buy{
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  margin-top: 20px;
+}

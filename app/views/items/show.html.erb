@@ -9,6 +9,11 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.images[0] ,class:"item-box-img" %>
+      <% if @item.shipment.present? %>
+        <div class='sold-out'>
+          <span>Sold Out!!</span>
+        </div>
+      <% end %>
       <% @item.images[1..-1].each do |img| %>
         <div class="other-image">
           <%= image_tag img %>
@@ -67,6 +72,7 @@
         <tr>
           <th class="detail-item">発送元の地域</th>
           <td class="detail-value"><%= @item.prefecture.name %></td>
+          <%# むり　<td class="detail-value"><%= @item.user.address.prefecture.name</td> %>
         </tr>
         <tr>
           <th class="detail-item">発送日の目安</th>

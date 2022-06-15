@@ -1,3 +1,4 @@
+<% breadcrumb :user_show%>
 <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
 <div class="AccountPage">
   <div class="AccountPage__title">
@@ -18,6 +19,38 @@
     /
     <%= @card[:exp_year] %>
   </div>
+
+  <br>
+  <br>
+  <br>
+
+  <div class="Card__title">
+    <h2>住所情報</h2>
+  </div>
+  <div class="Card_info">
+    <div class="detail">【郵便番号】</div>
+    <%= current_user.address.post_num %>
+   
+    <%# <div class="detail">【都道府県】</div>
+    <%= current_user.address.prefecture.name %> %>
+
+    <div class="detail">【市区町村】</div>
+    <%= current_user.address.city %>
+
+    <div class="detail">【番地】</div>
+    <%= current_user.address.house_num %>
+
+    <% if current_user.address.house_num.present?%>
+    <div class="detail">【建物名】</div>
+    <%= current_user.address.house_num %>
+    <% end %>
+
+    <div class="detail">【電話番号】</div>
+    <%= current_user.address.tel %>
+  </div>
+
+    <br>
+    <br>
     <br>
     <br>
     <br>

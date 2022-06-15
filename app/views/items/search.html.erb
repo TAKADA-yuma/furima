@@ -1,3 +1,4 @@
+<% breadcrumb :search %>
 <%= render "shared/header" %>
 <h1>検索ページ</h1>
 <h3><%= link_to 'トップページへ戻る', root_path%></h3>
@@ -38,7 +39,7 @@
     <% @items.each do |item| %>
       <li class='list'>
         <div class="posted-content">
-          <%= image_tag item.images[0] %><br>
+          <%= image_tag item.images[0],class: "item-img" %><br>
           <%= item.name%><br>
           <%= link_to '詳細', item_path(item.id)%>
         </div>

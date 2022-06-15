@@ -12,6 +12,11 @@ crumb :show do
   parent :root
 end
 
+crumb :new do
+  link "商品出品", new_item_path
+  parent :root
+end
+
 crumb :edit do
   link "商品編集", edit_item_path
   parent :show
@@ -20,6 +25,16 @@ end
 crumb :buy do
   link "商品購入", item_shipments_path
   parent :shipment_show
+end
+
+crumb :user_show do
+  link "ユーザー詳細ページ", user_path(params[:id])
+  parent :root
+end
+
+crumb :search do
+  link "検索ページ", search_items_path
+  parent :root
 end
 
 # crumb :projects do
