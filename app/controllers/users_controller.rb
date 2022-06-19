@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only:[:show]
  def show
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     card = Card.find_by(user_id: current_user.id)
@@ -10,4 +10,8 @@ class UsersController < ApplicationController
     customer = Payjp::Customer.retrieve(card.customer_token)
     @card = customer.cards.first
   end
+
+  def new
+  end
+
 end

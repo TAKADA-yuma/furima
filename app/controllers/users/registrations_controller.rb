@@ -9,11 +9,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create
-    @user = User.new(sign_up_params)
-      unless @user.valid?
-        render :new 
-        return
-      end
+   @user = User.new(sign_up_params)
+    unless @user.valid?
+      render :new 
+      return
+    end
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super
     session["devise.regist_data"] = {user: @user.attributes}
     # attributesメソッドはインスタンスメソッドから取得できる値をオブジェクト型からハッシュ型に変換できるメソッド。
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
