@@ -14,19 +14,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new 
       return
     end
-    if params[:sns_auth] == 'true'
-      pass = Devise.friendly_token
-      params[:user][:password] = pass
-      params[:user][:password_confirmation] = pass
-    end
-    super
     session["devise.regist_data"] = {user: @user.attributes}
     # attributesメソッドはインスタンスメソッドから取得できる値をオブジェクト型からハッシュ型に変換できるメソッド。
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     # paramsの中にはパスワードの情報は含まれてるが、attributesメソッドでデータ整形をした際にパスワードの情報は含まれていない。
     # そこで、パスワードを再度sessionに代入する必要がある。
     @address = @user.build_address
-    render :new_address
+    render :new_address 
   end
 
   def create_address
