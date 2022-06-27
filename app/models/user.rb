@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :shipments
   has_one :card
   has_one :address
+  has_many :comments
 
   has_many :sns_credentials
   def self.from_omniauth(auth)
