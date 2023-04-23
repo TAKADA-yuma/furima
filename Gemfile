@@ -88,5 +88,5 @@ gem "omniauth-rails_csrf_protection"
 gem 'omniauth', '~>1.9.1'
 
 group :production do
-  gem 'pg'
+  gem 'unicorn', '5.4.1'
 end
